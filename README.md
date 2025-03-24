@@ -59,7 +59,7 @@ This project lets two ESP32 boards talk to each other without wires using Blueto
 
 ## License
 
-This project is licensed under the [Your Chosen License, e.g., MIT License]. See the `LICENSE` file for more information.
+This project is licensed under the [Apache License]. See the `LICENSE` file for more information.
 
 ## Contact
 
