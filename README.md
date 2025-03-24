@@ -1,5 +1,6 @@
 # ESP32-BLE-Wireless-IO-Control
 
+
 This project lets two ESP32 boards talk to each other without wires using Bluetooth. One board (the **transmitter**) takes information in, and the other board (the **receiver**) controls things based on that information.
 
 ## What You Need
@@ -59,7 +60,7 @@ This project lets two ESP32 boards talk to each other without wires using Blueto
 
 ## License
 
-This project is licensed under the [Apache License]. See the `LICENSE` file for more information.
+This project is licensed under the **Apache License 2.0**. See the `LICENSE` file for more information.
 
 ## Contact
 
