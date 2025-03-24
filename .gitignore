@@ -30,3 +30,41 @@
 *.exe
 *.out
 *.app
+
+# Arduino specific build outputs and preferences
+*.prefs
+.arduino-create-cache/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Altium Designer specific ignores
+*.PrjPcb*
+Project Outputs for*
+*.outjob
+*.DRL
+*.GBR
+*.RPT
+*.LOG
+History/
+CMPLIB/
+LIBREF/
+Output/
+*.PcbDoc.backup*
+*.SchDoc.backup*
+
+# SolidWorks specific ignores
+*.swp
+*.idw
+_SolidWorks_*
+sldedb.mdb
+*.sldlfp
+*.sldlrt
+*.sldprt.asv*
+*.sldasm.asv*
+*.slddrw.asv*
+*.lck
+*.tlb
+*.xref
+Backup of*
