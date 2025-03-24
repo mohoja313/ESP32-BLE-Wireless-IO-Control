@@ -9,6 +9,32 @@ This project lets two ESP32 boards talk to each other without wires using Blueto
 * Arduino IDE (a free program for writing and uploading code).
 * USB cables to connect the ESP32 boards to your computer.
 
+## Hardware Components
+
+### Receiver
+
+* 1 x 7805 Voltage Regulator
+* 10 x 12V Relays
+* 10 x BD135 Transistors
+* 10 x 1N4007 Diodes
+* 10 x 10kΩ Resistors
+* 2 x 100µF 16V Electrolytic Capacitors
+* 2 x Ceramic Capacitors (marked "104")
+* Receiver PCB (design files included)
+
+**Important Wiring Note for Receiver PCB:**
+
+* On the receiver PCB, you need to manually connect **ESP32 pin D19** to the corresponding resistor pad. These are connected with a net named **C1** in the PCB file. Use a wire to solder these two points together.
+* Similarly, manually connect **ESP32 pin D21** to its corresponding resistor pad. These are connected with a net named **C3** in the PCB file. Use a wire to solder these two points together.
+
+### Sender
+
+* 10 x 1kΩ Resistors
+* 9 x Push Button DIP Switches
+* 1 x SPST Slide Switch
+* 1 x 3xAA Battery Holder (for 3 x 1.5V AA batteries)
+* Sender PCB (design files included)
+
 ## How to Set Up
 
 1.  **Install Arduino IDE:**
@@ -47,16 +73,18 @@ This project lets two ESP32 boards talk to each other without wires using Blueto
 
 ## How to Use
 
-1.  After uploading the code to both ESP32 boards, you can disconnect them from your computer.
-2.  Power both ESP32 boards using a power supply if needed.
-3.  The **transmitter** board will read the state of its input pins (labeled `k1` to `k10` in the code). When the state of an input pin changes, the transmitter will send a message wirelessly to the **receiver** board.
-4.  The **receiver** board will receive this message and then change the state of its output pins (labeled `R1` to `R10` in the code).
-5.  For example, if the input at `k1` on the transmitter changes, the output at `R1` on the receiver will likely change its state (turn on or off, depending on how you connected things). The code tells the boards exactly how the inputs and outputs are linked.
+1.  After uploading the code to both ESP32 boards, disconnect them from your computer.
+2.  Assemble the hardware components on the sender and receiver PCBs according to the design files.
+3.  **Receiver:** Ensure you have made the manual wire connections between ESP32 pin D19 and net C1, and between ESP32 pin D21 and net C3.
+4.  Power both ESP32 boards. The sender will likely be powered by the 3 AA batteries. Provide a suitable power source (likely 12V based on the relays) for the receiver, connected through the 7805 regulator to power the ESP32.
+5.  The **transmitter** board will read the state of its input pins (connected to the DIP switches and slide switch). When the state of an input changes, the transmitter will send a message wirelessly to the **receiver** board.
+6.  The **receiver** board will receive this message and then control the state of its output pins (connected to the relays).
+7.  For example, if you change the state of a DIP switch on the transmitter, a corresponding relay on the receiver will likely change its state (turn on or off, depending on your wiring and the code logic).
 
 ## What the Code Does
 
 * **Transmitter Code:** This code (in the `sender` folder) makes the ESP32 act like a sender. It looks at the input pins and uses Bluetooth to tell the receiver what is happening.
-* **Receiver Code:** This code (in the `receiver` folder) makes the other ESP32 act like a listener and controller. It waits for messages from the transmitter and then changes the state of its output pins based on those messages.
+* **Receiver Code:** This code (in the `receiver` folder) makes the other ESP32 act like a listener and controller. It waits for messages from the transmitter and then changes the state of its output pins (connected to the relays) based on those messages.
 
 ## License
 
